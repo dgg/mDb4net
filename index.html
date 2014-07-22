@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+		<link rel="stylesheet" href="css/nuget.css" >
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -112,9 +113,10 @@
 						<p>In order to use MongoDb from a program we need a driver for the language.</p>
 						<p>There are multiple for multiple languages.</p>
 						<p>The official driver for .NET is the one. <i>Nuget</i> it!</p>
-						<a href="http://www.nuget.org/packages/mongocsharpdriver/" target="_blank">
-							<img src="img/mongodb.nuget.png" alt="mongocsharpdriver" title="mongocsharpdriver">
-						</a>
+						<br/>
+						<div class="nuget-badge" >
+							<p><code>PM&gt; Install-Package elmah </code></p>
+						</div>
 						<aside class="notes">
 							Demo: open the demo solution and add it from the Nuget shell.
 						</aside>
@@ -122,20 +124,26 @@
 				</section>
 
 				<section>
-					<h2>Slides</h2>
+					<h2>CRUD</h2>
 					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
+						If you model your data correctly, simple CRUD (with BIG R) is what you will only do.
 					</p>
 				</section>
-
 				<section>
-					<h2>Point of View</h2>
+					<h2>Indexing. Boosting the R</h2>
 					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
+						Indexing is THE key for decent performance with decent-sized datasets.
 					</p>
 					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
+						You can index pretty much everything you need (arrays, objects, nested properties) to make your queries fast.
 					</p>
+					<p>Capacity plan your machines memory for indexes (and working set) to reside in there.</p>
+					<aside class="notes">
+						Demo: Load a big dataset (postal codes of germany). Query for coordinates with .explain(). Add an index and .explain() again.
+					</aside>
+					<aside class="notes">
+						Demo: use .explain() from a query from LinqPad. Add the index and run again.
+					</aside>
 				</section>
 
 				<section>
