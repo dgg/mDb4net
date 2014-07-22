@@ -112,10 +112,10 @@
 						<h2>The bits</h2>
 						<p>In order to use MongoDb from a program we need a driver for the language.</p>
 						<p>There are multiple for multiple languages.</p>
-						<p>The official driver for .NET is the one. <i>Nuget</i> it!</p>
+						<p>The official driver for .NET is the one. <i><a href="http://www.nuget.org/packages/mongocsharpdriver/">Nuget</a></i> it!</p>
 						<br/>
 						<div class="nuget-badge" >
-							<p><code>PM&gt; Install-Package elmah </code></p>
+							<p><code>PM&gt; Install-Package mongocsharpdriver </code></p>
 						</div>
 						<aside class="notes">
 							Demo: open the demo solution and add it from the Nuget shell.
@@ -124,10 +124,47 @@
 				</section>
 
 				<section>
+					<h2>Nice to know</h2>
+					<ul>
+						<li>Connection management</li>
+						<li>BSON and <code>BsonDocument</code></li>
+						<li>Document identity</li>
+					</ul>
+					<aside class="notes">
+						Demo: show how to access a single database, or multiple databases with and without IOC containers
+					</aside>
+					<aside class="notes">
+						Demo: show how to create BsonDocuments:
+							* BsonDoc.Add("", "")
+							* fluent .Add().Add()
+							* BsonDoc{{key, value}}
+							* showcase sub-documents and arrays
+							* update and set with indexers
+					</aside>
+					<aside class="notes">
+						Demo: show different strategies to identify documents:
+						* any simple type
+						* Guid
+						* ObjectId
+						* compound keys (they are just documents)
+						Show more in serialization
+					</aside>
+				</section>
+
+				<section>
 					<h2>CRUD</h2>
 					<p>
-						If you model your data correctly, simple CRUD (with BIG R) is what you will only do.
+						Spice it with application-oriented data modelling  and simple CRUD (with BIG R) is what you will do day in and day out.
 					</p>
+					<aside class="notes">
+						Demo: insert some documents using BsonDocument.
+					</aside>
+					<aside class="notes">
+						Demo: .FindOne() and Find() with several flavours of query documents: raw BsonDocument, QueryDocument, Query builder
+					</aside>
+					<aside class="notes">
+
+					</aside>
 				</section>
 				<section>
 					<h2>Indexing. Boosting the R</h2>
@@ -147,29 +184,43 @@
 				</section>
 
 				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
+					<h2>Serialization</h2>
+					<p><code>BsonDocument</code> is alright. But we are in .NET land.<br/>
+						And in .NET land, objects is spoken, not documents or pseudo-documents.
 					</p>
+					<p>Such small impedance can be mitigated by using the serialization part of the driver.</p>
 				</section>
 
 				<section>
-					<h2>Marvelous Unordered List</h2>
+					<h2>LINQ</h2>
+					<p>
+						Knowing how to build <code>IMongoQuery</code> is good. But we are in .NET land.<br/>
+						And in .NET land, LINQ in king in terms of querying.
+					</p>
+					<aside class="notes">
+						Demo: rewrite CRUD queries in LINQ
+					</aside>
+				</section>
+
+				<section>
+					<h2>The World is (apparently) not flat</h2>
+					<p>
+						And MongoDB knows it and wants to help us.<br/>
+						Let's scartch the surface...
+					</p>
+					<aside class="notes">
+						demo: find 10 nearest postal codes from a given location
+					</aside>
+				</section>
+
+				<section>
+					<h2>Data squeezing</h2>
+					<p>Sometimes, we need to asnwer difficult questions. We have two ways to asnwer:</p>
 					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
+						<li>Map/Reduce (on its way out)</li>
+						<li>Aggregation framework</li>
 					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
+					<p>In reality, these are nice extras: OLAP databases are for data analysis</p>
 				</section>
 
 				<section data-markdown>
