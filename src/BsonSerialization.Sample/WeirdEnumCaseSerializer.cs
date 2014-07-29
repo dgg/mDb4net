@@ -15,7 +15,8 @@ namespace BsonSerialization.Sample
 
 		public object Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
 		{
-			return null;
+			string value = bsonReader.ReadString();
+			return Enum.Parse(nominalType, value, ignoreCase: true);
 		}
 
 		public IBsonSerializationOptions GetDefaultSerializationOptions()

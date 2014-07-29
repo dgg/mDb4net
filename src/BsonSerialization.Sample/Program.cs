@@ -37,7 +37,11 @@ namespace BsonSerialization.Sample
 			};
 			ConventionRegistry.Register("camelize", camelize, _=> true);
 
-			Console.WriteLine(o.ToJson());
+			string json = o.ToJson();
+			Console.WriteLine(json);
+
+			o = BsonSerializer.Deserialize<TopLevel>(json);
+			Console.WriteLine(o.Children[0].Priority);
 
 			Console.WriteLine("\n...INTRO...");
 			Console.ReadLine();
