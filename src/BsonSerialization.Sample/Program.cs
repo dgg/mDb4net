@@ -32,7 +32,8 @@ namespace BsonSerialization.Sample
 
 			var camelize = new ConventionPack
 			{
-				new CamelCaseElementNameConvention()
+				new CamelCaseElementNameConvention(),
+				new WeirdEnumCasingConvention()
 			};
 			ConventionRegistry.Register("camelize", camelize, _=> true);
 
