@@ -3,6 +3,7 @@ using System.Diagnostics;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
+using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace BsonSerialization.Sample
 {
@@ -12,7 +13,6 @@ namespace BsonSerialization.Sample
 		{
 			var o = new TopLevel
 			{
-				Id = Guid.Empty,
 				Name = "top",
 				Number = 3.1416m,
 				Children = new[]
@@ -28,6 +28,7 @@ namespace BsonSerialization.Sample
 				// important to get default behavior
 				map.AutoMap();
 				map.GetMemberMap(tl => tl.Name).SetElementName("display_name");
+				map.GetMemberMap(tl => tl.Id).SetIdGenerator(new GuidGenerator());
 			});
 
 			var camelize = new ConventionPack
