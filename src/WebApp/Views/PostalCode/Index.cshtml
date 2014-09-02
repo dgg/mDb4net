@@ -15,7 +15,7 @@
 			<ul>
 				@foreach (var doc in @Model)
 				{
-					<li>@doc.placeName</li>
+					<li>@doc.placeName: lat: @doc.loc[1], long: @doc.location.longitude</li>
 				}
 			</ul>
 		</div>
