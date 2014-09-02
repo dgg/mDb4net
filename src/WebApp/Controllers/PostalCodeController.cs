@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using Nancy;
+using UseDynamicSyntax.Models;
 
 namespace UseDynamicSyntax.Controllers
 {
@@ -11,9 +12,10 @@ namespace UseDynamicSyntax.Controllers
 
 			Get["/postal-codes"] = p =>
 			{
-				var first24 = db.GetCollection("PostalCodes").FindAll().SetLimit(24);
+				var first24 = db.GetCollection("PostalCodes")
+					.FindAll().SetLimit(24);
 
-				return View["PostalCode/Index", first24];
+				return View["PostalCode/Index", first24.AsDynamic()];
 			};
 		}
 	}

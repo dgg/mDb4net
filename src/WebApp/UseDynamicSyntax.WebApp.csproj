@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PostalCodeController.cs" />
+    <Compile Include="Models\DynamicBsonDocument.cs" />
+    <Compile Include="Models\DynamicExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
