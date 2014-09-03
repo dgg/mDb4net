@@ -43,7 +43,10 @@ void Main()
 			s => s.PlaceName))
 		.Dump("aarhusC", 2);
 		
-	
+	var sønderborg = db.GetCollection<Snapshot>("PostalCodes")
+		.FindAs<Snapshot>(Query<Snapshot>.EQ(s => s.PostalCode, 6400))
+		.SetFields(All<Snapshot>.Fields)
+		.Dump("sønderborg", 2);
 }
 
 // Define other methods and classes here
@@ -69,4 +72,34 @@ public class Snapshot
 	public string CountryCode { get; set; }
 	public string PlaceName { get; set; }
 	public int PostalCode { get; set; }
+}
+
+public static class All<T>
+{
+	private static readonly Lazy<IMongoFields> _fields;
+	static All()
+	{
+		
+		Func<IMongoFields> init = ()=>
+		{
+			Type type = typeof(T);
+						
+			BsonClassMap map = BsonClassMap<T>.LookupClassMap(type);
+			if (map == null)
+			{
+				throw new ArgumentException(string.Format(
+				"Cannot find class map for type '{0}'",
+				type.FullName),
+				"<T>");
+			}
+			string[] memberNames = map.AllMemberMaps
+				.Select(m => m.ElementName)
+				.ToArray();
+			IMongoFields fields = MongoDB.Driver.Builders.Fields.Include(memberNames);
+			return fields;
+		};
+		_fields = new Lazy<IMongoFields>(init);
+	}
+
+	public static IMongoFields Fields { get { return _fields.Value;} }
 }
