@@ -20,15 +20,19 @@ void Main()
 	var db = new MongoClient().GetServer().GetDatabase("pitfalls");
 	var aalborgC = db.GetCollection<Detail>("PostalCodes")
 		.AsQueryable()
-		.First(p => p.PostalCode == 9000);
-	
-	aalborgC.Dump(2);
+		.First(p => p.PostalCode == 9000)
+		.Dump("aalborgC", 2);
 	
 	var nørresundby = db.GetCollection<Snapshot>("PostalCodes")
 		.AsQueryable()
-		.First(p => p.PostalCode == 9400);
-		
-	nørresundby.Dump(2);
+		.First(p => p.PostalCode == 9400)
+		.Dump("nørresundby", 2);
+	
+	var klarup = db.GetCollection<Snapshot>("PostalCodes")
+		.AsQueryable()
+		.Where(p => p.PostalCode == 9270)
+		.Select(p => new {p.PlaceName})
+		.Dump("klarup", 2);
 }
 
 // Define other methods and classes here
@@ -48,6 +52,7 @@ public class Location
 	public double Latitude { get; set; }
 }
 
+[BsonIgnoreExtraElements]
 public class Snapshot
 {
 	public string CountryCode { get; set; }
