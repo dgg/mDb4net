@@ -18,14 +18,15 @@ void Main()
 	ConventionRegistry.Register("camelize", pack, _ => true);
 
 	var db = new MongoClient().GetServer().GetDatabase("pitfalls");
+	
 	var aalborgC = db.GetCollection<Detail>("PostalCodes")
 		.AsQueryable()
-		.First(p => p.PostalCode == 9000)
+		.Where(p => p.PostalCode == 9000)
 		.Dump("aalborgC", 2);
 	
 	var nørresundby = db.GetCollection<Snapshot>("PostalCodes")
 		.AsQueryable()
-		.First(p => p.PostalCode == 9400)
+		.Where(p => p.PostalCode == 9400)
 		.Dump("nørresundby", 2);
 	
 	var klarup = db.GetCollection<Snapshot>("PostalCodes")
@@ -33,6 +34,16 @@ void Main()
 		.Where(p => p.PostalCode == 9270)
 		.Select(p => new {p.PlaceName})
 		.Dump("klarup", 2);
+		
+	var aarhusC = db.GetCollection<Snapshot>("PostalCodes")
+		.FindAs<Snapshot>(Query<Snapshot>.EQ(s => s.PostalCode, 8000))
+		.SetFields(Fields<Snapshot>.Include(
+			s => s.CountryCode,
+			s => s.PostalCode,
+			s => s.PlaceName))
+		.Dump("aarhusC", 2);
+		
+	
 }
 
 // Define other methods and classes here
