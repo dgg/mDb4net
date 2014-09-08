@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+		<link rel="stylesheet" href="css/theme/vertica.css" id="theme">
 		<link rel="stylesheet" href="css/nuget.css" >
 
 		<!-- For syntax highlighting -->
@@ -39,8 +39,8 @@
 
 	<body>
 
+		
 		<div class="reveal">
-
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
@@ -49,6 +49,7 @@
 					<p>
 						<small><a href="http://dgondotnet.blogspot.dk/">Daniel González García</a> / <a href="https://github.com/dgg/">dgg</a></small>
 					</p>
+					<img class="no-border" src="img/aanug.png" />
 				</section>
 
 				<section>
@@ -57,12 +58,11 @@
 						A compromise No-SQL.
 					</p>
 					<p>
-						Say goodbye to duplicated schema (tables/code) and impedance. Documents play better with objects
+						Say <em>so long</em> to duplicated schema (tables/code) and relational/object impedance.
 					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
+					<p>
+						Documents play better with objects but, remember, they are still not objects.
+					</p>
 				</section>
 
 				<!-- Example of nested vertical slides -->
@@ -70,7 +70,7 @@
 					<section>
 						<h2>The Basics</h2>
 						<p>
-							Distribution <a href="http://www.mongodb.org/downloads" class="navigate-down">download</a>.
+							Distribution <a href="http://www.mongodb.org/downloads" target="_blank">download</a>.
 						</p>
 						<p>Server, client and tools</p>
 						<p>Unix flavoured</p>
@@ -82,7 +82,7 @@
 					<section>
 						<h2>The Server: <code>mongod.exe</code></h2>
 						<p> Develop from the command line.</p>
-						<p>Deploy it as a server.</p>
+						<p>Deploy it as a Windows service.</p>
 						<aside class="notes">
 							Demo: run it from command line and install it as a service.
 						</aside>
@@ -440,8 +440,10 @@ function linkify( selector ) {
 				</section>
 
 			</div>
-
 		</div>
+		<div class="logo">
+			<img src="img/vertica-logo.png" />
+</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
