@@ -10,7 +10,8 @@
 
 void Main()
 {
-
+	printCollections(
+		new MongoClient().GetServer().GetDatabase("basics"));
 }
 
 // Define other methods and classes here
