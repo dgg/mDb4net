@@ -12,6 +12,9 @@ void Main()
 {
 	printCollections(
 		new MongoClient().GetServer().GetDatabase("basics"));
+	
+	printCollections(
+		new MongoClient("mongodb://localhost:27017").GetServer().GetDatabase("basics"));
 }
 
 // Define other methods and classes here
