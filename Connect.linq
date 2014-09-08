@@ -22,6 +22,10 @@ void Main()
 	};
 	printCollections(
 		new MongoClient(clientSettings).GetServer().GetDatabase("basics"));
+		
+	MongoUrl url = MongoUrl.Create("mongodb://localhost:27017");
+	printCollections(
+		new MongoClient(url).GetServer().GetDatabase("basics"));
 }
 
 // Define other methods and classes here
