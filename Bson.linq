@@ -12,6 +12,12 @@ BsonDocument doc = new BsonDocument();
 doc.Dump("empty");
 
 doc = new BsonDocument("key", 42L);
-doc.Dump("initialize with one key", 2);
+doc.Dump("initialize with one key", 3);
 doc.Add("anoter_key", false);
-doc.Dump("add property", 2);
+doc.Dump("add property", 3);
+
+doc.Add("chain_1", 1).Add("chain_2", 2).Set("another_key", true);
+doc.Dump("chain property operations", 3);
+doc["another_key"] = "FALSE";
+doc["new_key"] = 'a';
+doc.Dump("indexers", 3);
