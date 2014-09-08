@@ -11,5 +11,5 @@
 BsonDocument doc = new BsonDocument();
 doc.Dump("empty");
 
-doc = new BsonDocument("key", new BsonInt32(42));
+doc = new BsonDocument("key", 42);
 doc.Dump("initilize with one key", 2);
