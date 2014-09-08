@@ -15,6 +15,13 @@ void Main()
 	
 	printCollections(
 		new MongoClient("mongodb://localhost:27017").GetServer().GetDatabase("basics"));
+		
+	var clientSettings = new MongoClientSettings()
+	{
+		Server = new MongoServerAddress("localhost", 27017)
+	};
+	printCollections(
+		new MongoClient(clientSettings).GetServer().GetDatabase("basics"));
 }
 
 // Define other methods and classes here
