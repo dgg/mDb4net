@@ -12,4 +12,6 @@ BsonDocument doc = new BsonDocument();
 doc.Dump("empty");
 
 doc = new BsonDocument("key", 42L);
-doc.Dump("initilize with one key", 2);
+doc.Dump("initialize with one key", 2);
+doc.Add("anoter_key", false);
+doc.Dump("add property", 2);
