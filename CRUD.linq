@@ -62,7 +62,7 @@ Query.Or(
 
 //people.Count(Query.Exists("_id")).Dump();
 
-var lazy = people.FindAllAs<BsonDocument>();
+/*var lazy = people.FindAllAs<BsonDocument>();
 lazy.Skip = 1;
 lazy.Limit = 2;
 lazy.Fields = Fields.Include("name");
@@ -71,4 +71,6 @@ foreach (var person in lazy)
 {
 	person.Contains("name").Dump("has name");
 	person.Contains("age").Dump("has age");
-}
+}*/
+
+people.Update(Query.EQ("name", "Jorge"), Update.Set("age", 39)).Dump();
