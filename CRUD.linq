@@ -52,4 +52,8 @@ people.FindAs<BsonDocument>(Query.EQ("name", "Daniel")).Dump(2);*/
 query.Add("nicknames", "Kiko");
 people.FindAs<BsonDocument>(query).Dump(2);*/
 
-people.Count(Query.GT("age", 37)).Dump();
+people.Count(
+Query.Or(
+	Query.EQ("nicknames", "flips"),
+	Query.GT("age", 37)))
+.Dump();
