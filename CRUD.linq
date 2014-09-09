@@ -13,13 +13,13 @@ MongoDatabase db = client.GetServer().GetDatabase("crud");
 MongoCollection people = db.GetCollection("People");
 
 
-/*var daniel = new BsonDocument("_id", new {dni = "50974906Y", cpr = "110377xxxx"}.ToBsonDocument())
+var daniel = new BsonDocument("_id", new {dni = "50974906Y", cpr = "110377xxxx"}.ToBsonDocument())
 {
 	{"name", "Daniel"},
 	{"age", 37},
 	{"nicknames", new BsonArray{"flips", "Spanish Dan", "Great Dane"} }
 };
-people.Insert(daniel);*/
+people.Insert(daniel);
 
 /*BsonDocument[] morePeople = new[]
 {
@@ -52,8 +52,10 @@ people.FindAs<BsonDocument>(Query.EQ("name", "Daniel")).Dump(2);*/
 query.Add("nicknames", "Kiko");
 people.FindAs<BsonDocument>(query).Dump(2);*/
 
-people.Count(
+/*people.Count(
 Query.Or(
 	Query.EQ("nicknames", "flips"),
 	Query.GT("age", 37)))
-.Dump();
+.Dump();*/
+
+people.FindAs<BsonDocument>(Query.EQ("_id.dni", "50974906Y")).Dump(2);
