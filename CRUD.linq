@@ -74,4 +74,5 @@ foreach (var person in lazy)
 }*/
 
 //people.Update(Query.EQ("name", "Jorge"), Update.Inc("age", 2)).Dump();
-people.Update(Query.EQ("name", "Jorge"), Update.Set("created", 2)).Dump();
+people.Update(Query.EQ("name", "Jorge"), Update.Set("created", 2));
+people.Update(Query.EQ("name", "Jorge"), Update.Unset("created"));
