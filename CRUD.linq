@@ -45,3 +45,4 @@ people.Insert(daniel);*/
 people.InsertBatch(morePeople);*/
 
 people.FindOneAs<BsonDocument>().Dump(2);
+people.FindAllAs<BsonDocument>().Dump(2);
