@@ -21,7 +21,7 @@ MongoCollection people = db.GetCollection("People");
 };
 people.Insert(daniel);*/
 
-BsonDocument[] morePeople = new[]
+/*BsonDocument[] morePeople = new[]
 {
 	new BsonDocument
 	{
@@ -42,4 +42,6 @@ BsonDocument[] morePeople = new[]
 		{"nicknames", new BsonArray{"Can", "Chiqs"} }
 	},
 };
-people.InsertBatch(morePeople);
+people.InsertBatch(morePeople);*/
+
+people.FindOneAs<BsonDocument>().Dump(2);
