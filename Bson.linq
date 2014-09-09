@@ -41,3 +41,19 @@ var jsonLike = new BsonDocument("_id", "user1")
 };
 
 jsonLike.Dump("json-like", 2);
+
+var o = new
+{
+	_id = "user1",
+	interests = new[]{"basketball", "drumming"},
+	address = new
+	{
+		street = "20 Main",
+		town = "Westfield",
+		zip ="5678"
+	}
+};
+o.Dump("object");
+
+var b = o.ToBsonDocument();
+b.Dump("bson document", 2);
