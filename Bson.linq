@@ -60,3 +60,6 @@ b.Dump("bson document", 2);
 
 o.ToJson().Dump("obj -> json");
 b.ToJson().Dump("bson -> json");
+
+string json = "{ \"_id\" : \"user1\", \"interests\" : [\"basketball\", \"drumming\"], \"address\" : { \"street\" : \"20 Main\", \"town\" : \"Westfield\", \"zip\" : \"5678\" } }";
+BsonDocument.Parse(json).Dump("parsed json", 2);
