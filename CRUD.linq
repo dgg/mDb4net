@@ -62,4 +62,11 @@ Query.Or(
 
 //people.Count(Query.Exists("_id")).Dump();
 
-people.FindAllAs<BsonDocument>().SetSkip(1).SetLimit(2).Dump(2);
+var lazy = people.FindAllAs<BsonDocument>();
+lazy.Skip = 1;
+lazy.Limit = 2;
+
+foreach (var person in lazy)
+{
+	person["name"].AsString.Dump();
+}
