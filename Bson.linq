@@ -57,3 +57,6 @@ o.Dump("object");
 
 var b = o.ToBsonDocument();
 b.Dump("bson document", 2);
+
+o.ToJson().Dump("obj -> json");
+b.ToJson().Dump("bson -> json");
