@@ -73,4 +73,4 @@ foreach (var person in lazy)
 	person.Contains("age").Dump("has age");
 }*/
 
-people.Update(Query.EQ("name", "Jorge"), Update.Set("age", 39)).Dump();
+people.Update(Query.EQ("name", "Jorge"), Update.Inc("age", 2)).Dump();
