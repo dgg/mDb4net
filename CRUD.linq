@@ -46,3 +46,4 @@ people.InsertBatch(morePeople);*/
 
 people.FindOneAs<BsonDocument>().Dump(2);
 people.FindAllAs<BsonDocument>().Dump(2);
+people.FindOneByIdAs<BsonDocument>(new ObjectId("540ea7c4f09efc12907e4c9d")).Dump(2);
