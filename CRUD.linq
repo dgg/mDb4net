@@ -44,7 +44,8 @@ people.Insert(daniel);*/
 };
 people.InsertBatch(morePeople);*/
 
-people.FindOneAs<BsonDocument>().Dump(2);
+/*people.FindOneAs<BsonDocument>().Dump(2);
 people.FindAllAs<BsonDocument>().Dump(2);
 people.FindOneByIdAs<BsonDocument>(new ObjectId("540ea7c4f09efc12907e4c9d")).Dump(2);
-people.FindAs<BsonDocument>(Query.EQ("name", "Daniel")).Dump(2);
+people.FindAs<BsonDocument>(Query.EQ("name", "Daniel")).Dump(2);*/
+people.FindAs<BsonDocument>(new QueryDocument("age", 37)).Dump(2);
