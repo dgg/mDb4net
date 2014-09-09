@@ -65,8 +65,10 @@ Query.Or(
 var lazy = people.FindAllAs<BsonDocument>();
 lazy.Skip = 1;
 lazy.Limit = 2;
+lazy.Fields = Fields.Include("name");
 
 foreach (var person in lazy)
 {
-	person["name"].AsString.Dump();
+	person.Contains("name").Dump("has name");
+	person.Contains("age").Dump("has age");
 }
