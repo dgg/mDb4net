@@ -24,3 +24,6 @@ doc.Dump("indexers", 3);
 
 doc.Add("a_list", new BsonArray{1, 2, 3, 4});
 doc.Dump("arrays", 2);
+
+doc.Add("subdocument", new BsonDocument("key", "value"));
+doc.Dump("subdocument", 2);
