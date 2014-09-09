@@ -60,4 +60,6 @@ Query.Or(
 
 //people.FindAs<BsonDocument>(Query.EQ("_id.dni", "50974906Y")).Dump(2);
 
-people.Count(Query.Exists("_id")).Dump();
+//people.Count(Query.Exists("_id")).Dump();
+
+people.FindAllAs<BsonDocument>().SetSkip(1).SetLimit(2).Dump(2);
