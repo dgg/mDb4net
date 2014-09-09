@@ -27,3 +27,17 @@ doc.Dump("arrays", 2);
 
 doc.Add("subdocument", new BsonDocument("key", "value"));
 doc.Dump("subdocument", 2);
+
+var jsonLike = new BsonDocument("_id", "user1")
+{
+	{"interests", new BsonArray{"basketball", "drumming"}},
+	{"address", new BsonDocument
+		{
+			{"street", "20 Main"},
+			{"town", "Westfield"},
+			{"zip", "5678"}
+		}
+	}
+};
+
+jsonLike.Dump("json-like", 2);
