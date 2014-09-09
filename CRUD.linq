@@ -13,7 +13,7 @@ MongoDatabase db = client.GetServer().GetDatabase("crud");
 MongoCollection people = db.GetCollection("People");
 
 
-var daniel = new BsonDocument("_id", new BsonObjectId(new ObjectId(1, 2, 3, 4).Dump("object id")).Dump("bson object id"))
+var daniel = new BsonDocument("_id", Guid.NewGuid())
 {
 	{"name", "Daniel"},
 	{"age", 37},
