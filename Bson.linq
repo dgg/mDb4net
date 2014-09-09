@@ -21,3 +21,6 @@ doc.Dump("chain property operations", 3);
 doc["another_key"] = "FALSE";
 doc["new_key"] = 'a';
 doc.Dump("indexers", 3);
+
+doc.Add("a_list", new BsonArray{1, 2, 3, 4});
+doc.Dump("arrays", 2);
