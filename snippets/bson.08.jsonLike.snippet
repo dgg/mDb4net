@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>bson.08.jsonLike</Title>
+      <Author></Author>
+      <Description></Description>
+      <HelpUrl></HelpUrl>
+      <SnippetTypes />
+      <Keywords />
+      <Shortcut></Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations />
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[var jsonLike = new BsonDocument("_id", "user1")
+{
+	{"interests", new BsonArray{"basketball", "drumming"}},
+	{"address", new BsonDocument
+		{
+			{"street", "20 Main"},
+			{"town", "Westfield"},
+			{"zip", "5678"}
+		}
+	}
+};
+
+jsonLike.Dump("json-like", 2);
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
