@@ -36,4 +36,11 @@ var coordinates = new FieldsDocument
 postalCodes
 	.Find(fromAalborgC)
 	.SetFields(coordinates)
-	.Dump("coordinates", 4);
+	.Explain()
+	.Dump("projection", 4);
+	
+postalCodes
+	.Find(fromAalborgC)
+	.SetFields(Fields.Include("countryCode", "postalCode").Exclude("_id"))
+	.Explain()
+	.Dump("covered", 4);
