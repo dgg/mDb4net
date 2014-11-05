@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>crud.12.updateUpsert</Title>
+      <Author></Author>
+      <Description></Description>
+      <HelpUrl></HelpUrl>
+      <SnippetTypes />
+      <Keywords />
+      <Shortcut></Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations />
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[people.Update(
+	Query.EQ("name", "Mario"),
+	Update.Set("gender", "M")
+);
+people.Count().Dump("No upsert, still 4 documents");
+
+people.Update(
+	Query.EQ("name", "Mario"),
+	Update.Set("gender", "M"),
+	UpdateFlags.Upsert
+);
+people.Count().Dump("Upserted male Mario");]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

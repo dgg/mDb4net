@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>crud.02.createMore</Title>
+      <Author></Author>
+      <Description></Description>
+      <HelpUrl></HelpUrl>
+      <SnippetTypes />
+      <Keywords />
+      <Shortcut></Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations />
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[BsonDocument[] morePeople = new[]
+{
+	new BsonDocument("_id", 1)
+	{
+		{"name", "Jesús"},
+		{"age", 37},
+		{"nicknames", new BsonArray{"Chuchi", "Kiko", "Muslitos Sánchez"} }
+	},
+	new BsonDocument("_id", Guid.NewGuid())
+	{
+		{"name", "Jorge"},
+		{"age", 38},
+		{"nicknames", new BsonArray{"Can", "Chiqs", "Bracicos"} }
+	},
+	new BsonDocument("_id", new {dni = "50974906Y", cpr = "110377xxxx"}.ToBsonDocument())
+	{
+		{"name", "Daniel"},
+		{"age", 37},
+		{"nicknames", new BsonArray{"Flips", "Spanish Dan", "Great Dane"} }
+	},
+};
+people.InsertBatch(morePeople);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
