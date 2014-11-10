@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>geo.02.geoNearObject</Title>
+      <Author></Author>
+      <Description></Description>
+      <HelpUrl></HelpUrl>
+      <SnippetTypes />
+      <Keywords />
+      <Shortcut></Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations />
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[postalCodes.CreateIndex(IndexKeys.GeoSpatialSpherical("location"));
+var args = new GeoNearArgs
+{
+	Limit = 5,
+	Spherical = true,
+	Query = Query.EQ("countryCode", country),
+	UniqueDocs = true,
+	Near = new GeoNearPoint.Legacy(new XYPoint(longitude, latitude))
+};
+postalCodes.GeoNear(args)
+.Hits.Select(h => new
+{
+	Distance = distanceInKm(h.Distance),
+	Name = h.Document["placeName"].AsString,
+	PostalCode = h.Document["postalCode"].AsInt32
+}).Dump(1);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

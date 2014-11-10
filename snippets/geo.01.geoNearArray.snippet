@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>geo.01.geoNearArray</Title>
+      <Author />
+      <Description />
+      <HelpUrl />
+      <SnippetTypes />
+      <Keywords />
+      <Shortcut />
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations />
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[postalCodes.CreateIndex(IndexKeys.GeoSpatialSpherical("loc"));
+GeoNearResult<BsonDocument> results = postalCodes.GeoNear(
+	Query.EQ("countryCode", country),
+	longitude, latitude,
+	5,
+	GeoNearOptions.SetSpherical(true));
+	
+results.Hits.Select(h => new
+{
+	Distance = distanceInKm(h.Distance),
+	Name = h.Document["placeName"].AsString,
+	PostalCode = h.Document["postalCode"].AsInt32
+}).Dump(1);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

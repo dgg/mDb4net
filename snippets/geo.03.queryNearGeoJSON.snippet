@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>geo.03.queryNearGeoJSON</Title>
+      <Author></Author>
+      <Description></Description>
+      <HelpUrl></HelpUrl>
+      <SnippetTypes />
+      <Keywords />
+      <Shortcut></Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations />
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[postalCodes.CreateIndex(IndexKeys.GeoSpatialSpherical("geoLocation"));
+var location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(new GeoJson2DGeographicCoordinates(longitude, latitude));
+postalCodes.Find(Query.Near("geoLocation", location)).SetLimit(5)
+.Select(h => new
+{
+	Name = h["placeName"].AsString,
+	PostalCode = h["postalCode"].AsInt32
+})
+.Dump();]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

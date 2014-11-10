@@ -19,7 +19,12 @@ const double EARTH_RADIUS_KM = 6378.137;
 Func<double, double> distanceInKm = d => d * EARTH_RADIUS_KM;
 
 /*postalCodes.CreateIndex(IndexKeys.GeoSpatialSpherical("loc"));
-GeoNearResult<BsonDocument> results = postalCodes.GeoNear(Query.EQ("countryCode", country), longitude, latitude, 5, GeoNearOptions.SetSpherical(true));
+GeoNearResult<BsonDocument> results = postalCodes.GeoNear(
+	Query.EQ("countryCode", country),
+	longitude, latitude,
+	5,
+	GeoNearOptions.SetSpherical(true));
+	
 results.Hits.Select(h => new
 {
 	Distance = distanceInKm(h.Distance),
@@ -35,7 +40,6 @@ var args = new GeoNearArgs
 	Query = Query.EQ("countryCode", country),
 	UniqueDocs = true,
 	Near = new GeoNearPoint.Legacy(new XYPoint(longitude, latitude))
-	//Near = new GeoNearPoint.GeoJson<GeoJson2DGeographicCoordinates>(new GeoJsonPoint<GeoJson2DGeographicCoordinates>(new GeoJson2DGeographicCoordinates(longitude, latitude)))
 };
 postalCodes.GeoNear(args)
 .Hits.Select(h => new
@@ -45,6 +49,12 @@ postalCodes.GeoNear(args)
 	PostalCode = h.Document["postalCode"].AsInt32
 }).Dump(1);*/
 
-postalCodes.CreateIndex(IndexKeys.GeoSpatialSpherical("geoLocation"));
+/*postalCodes.CreateIndex(IndexKeys.GeoSpatialSpherical("geoLocation"));
 var location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(new GeoJson2DGeographicCoordinates(longitude, latitude));
-postalCodes.Find(Query.Near("geoLocation", location)).SetLimit(5).Dump(3);
+postalCodes.Find(Query.Near("geoLocation", location)).SetLimit(5)
+.Select(h => new
+{
+	Name = h["placeName"].AsString,
+	PostalCode = h["postalCode"].AsInt32
+})
+.Dump();*/
