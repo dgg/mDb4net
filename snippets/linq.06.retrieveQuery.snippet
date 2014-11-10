@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>linq.06.retrieveQuery</Title>
+      <Author></Author>
+      <Description></Description>
+      <HelpUrl></HelpUrl>
+      <SnippetTypes />
+      <Keywords />
+      <Shortcut></Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations />
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[var lazy = people.AsQueryable()
+		.Skip(1)
+		.Take(2)
+		.Select(p => new {p.Name});
+		
+foreach (var clientProjection in lazy)
+{
+	clientProjection.Name.Dump();
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

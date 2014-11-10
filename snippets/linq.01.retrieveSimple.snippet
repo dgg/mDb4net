@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>linq.01.retrieveSimple</Title>
+      <Author></Author>
+      <Description></Description>
+      <HelpUrl></HelpUrl>
+      <SnippetTypes />
+      <Keywords />
+      <Shortcut></Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations />
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[/*people.FindOneAs<BsonDocument>().Dump(2);
+	people.FindAllAs<BsonDocument>().Dump(2);
+	people.FindOneByIdAs<BsonDocument>(new ObjectId("545a8427096dd89ab561e98c")).Dump(2);
+	people.FindAs<BsonDocument>(Query.EQ("name", "Daniel")).Dump(2);*/
+	
+people.FindOne().Dump(2);
+people.FindAll().Dump(2);
+people.FindOneById(new ObjectId("546084c5f09efb17bca47bac")).Dump(2);
+people.Find(Query.EQ("Name", "Daniel")).Dump(2);
+people.Find(Query<Person>.EQ(p => p.Name, "Daniel")).Dump(2);
+	
+people.AsQueryable().First().Dump(2);
+people.AsQueryable().Dump(2);
+people.AsQueryable().Where(p => p.Name == "Daniel").Dump(2);*/]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
