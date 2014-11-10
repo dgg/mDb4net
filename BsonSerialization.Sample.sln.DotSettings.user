@@ -1,0 +1,133 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/Shortcut/@EntryValue">mdb4net.04.serializer</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0E63BF2517E1874D8F3B1C851AE8ADA5/Text/@EntryValue">internal class WeirdEnumCasingSerializer : IBsonSerializer&#xD;
+{&#xD;
+	public object Deserialize(BsonReader bsonReader, Type nominalType, IBsonSerializationOptions options)&#xD;
+	{&#xD;
+		return null;&#xD;
+	}&#xD;
+&#xD;
+		public object Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)&#xD;
+		{&#xD;
+			string value = bsonReader.ReadString();&#xD;
+			return Enum.Parse(nominalType, value, ignoreCase: true);&#xD;
+		}&#xD;
+&#xD;
+		public IBsonSerializationOptions GetDefaultSerializationOptions()&#xD;
+		{&#xD;
+			return DocumentSerializationOptions.Defaults;&#xD;
+		}&#xD;
+&#xD;
+		public void Serialize(BsonWriter bsonWriter, Type nominalType, object value, IBsonSerializationOptions options)&#xD;
+		{&#xD;
+			var sb = new StringBuilder(value.ToString());&#xD;
+			for (int i = 0; i &lt; sb.Length; i++)&#xD;
+			{&#xD;
+				if (even(i)) sb[i] = char.ToLowerInvariant(sb[i]);&#xD;
+				else sb[i] = char.ToUpperInvariant(sb[i]);&#xD;
+			}&#xD;
+			bsonWriter.WriteString(sb.ToString());&#xD;
+		}&#xD;
+&#xD;
+		private bool even(int i)&#xD;
+		{&#xD;
+			return i%2 == 0;&#xD;
+		}&#xD;
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/Description/@EntryValue">camel</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/Shortcut/@EntryValue">mdb4net.03.convention</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1084E3AE2F1917479E7A552908BAD7B9/Text/@EntryValue">var camelize = new ConventionPack&#xD;
+			{&#xD;
+				new CamelCaseElementNameConvention()&#xD;
+			};&#xD;
+			ConventionRegistry.Register("camelize", camelize, _=&gt; true);</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/Shortcut/@EntryValue">mdb4net.07.serializerConvention</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=1132EF3D9C24C94691507D75B614B31C/Text/@EntryValue">internal class WeirdEnumCasingConvention : IMemberMapConvention&#xD;
+{&#xD;
+	public string Name { get { return "Weird Casing"; } }&#xD;
+&#xD;
+	public void Apply(BsonMemberMap memberMap)&#xD;
+	{&#xD;
+		if (memberMap.MemberType.IsEnum)&#xD;
+		{&#xD;
+			memberMap.SetSerializer(new WeirdEnumCasingSerializer());&#xD;
+		}&#xD;
+	}&#xD;
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/Shortcut/@EntryValue">mdb4net.08.idGeneration</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6DEF3DA09839404FA6083F8C7A632E76/Text/@EntryValue">map.GetMemberMap(tl =&gt; tl.Id).SetIdGenerator(AscendingGuidGenerator.Instance);</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/Description/@EntryValue">Custom serializer via attributes</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/Shortcut/@EntryValue">mdb4net.05.bsonSerializer</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=A6800B9F2AAFC544807BB590FEE030C5/Text/@EntryValue">[BsonSerializer(typeof(WeirdEnumCasingSerializer))]</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/Description/@EntryValue">apply custom serializer via class map</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/Shortcut/@EntryValue">mdb4net.06.serializerClassMap</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BCA7099FAF41994DA640D3AF8D98433E/Text/@EntryValue">BsonClassMap.RegisterClassMap&lt;SecondLevel&gt;(map =&gt;&#xD;
+{&#xD;
+	map.AutoMap();&#xD;
+	map.GetMemberMap(sl =&gt; sl.Priority).SetSerializer(new WeirdEnumCasingSerializer());&#xD;
+});</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/Shortcut/@EntryValue">mdb4net.01.bsonElement</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/Text/@EntryValue">[BsonElement("display_name")]</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C2EEACFCCECCC84E90173E00472BBB4D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/Shortcut/@EntryValue">mdb4net.02.classMap</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA3E7490AAC2F54EB7287F7852B66EEC/Text/@EntryValue">BsonClassMap.RegisterClassMap&lt;TopLevel&gt;(map =&gt;&#xD;
+{&#xD;
+		// important to get default behavior&#xD;
+		map.AutoMap();&#xD;
+		map.GetMemberMap(tl =&gt; tl.Name).SetElementName("display_name");&#xD;
+});</s:String></wpf:ResourceDictionary>
