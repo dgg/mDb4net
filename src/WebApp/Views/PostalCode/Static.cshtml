@@ -1,0 +1,23 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Postal Codes</title>
+	</head>
+	<body>
+		<h1>Postal Codes</h1>
+		<h2>First 24 entries...</h2>
+		<div>
+			<ul>
+				@foreach (var doc in @Model)
+				{
+					<li>@doc["placeName"]: lat: @doc["loc"][1], long: @doc["location"]["longitude"]</li>
+				}
+			</ul>
+		</div>
+	</body>
+</html>

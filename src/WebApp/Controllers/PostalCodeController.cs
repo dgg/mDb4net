@@ -10,12 +10,20 @@ namespace UseDynamicSyntax.Controllers
 		{
 			var db = new MongoClient().GetServer().GetDatabase("dynamic");
 
-			Get["/postal-codes"] = p =>
+			Get["/static/postal-codes"] = p =>
 			{
 				var first24 = db.GetCollection("PostalCodes")
 					.FindAll().SetLimit(24);
 
-				return View["PostalCode/Index", first24.AsDynamic()];
+				return View["PostalCode/Static", first24];
+			};
+
+			Get["/dynamic/postal-codes"] = p =>
+			{
+				var first24 = db.GetCollection("PostalCodes")
+					.FindAll().SetLimit(24);
+
+				return View["PostalCode/Dynamic", first24.AsDynamic()];
 			};
 		}
 	}

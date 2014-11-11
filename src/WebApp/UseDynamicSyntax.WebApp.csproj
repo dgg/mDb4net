@@ -65,7 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Views\PostalCode\Index.cshtml" />
+    <Content Include="Views\PostalCode\Dynamic.cshtml" />
+    <Content Include="Views\PostalCode\Static.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
