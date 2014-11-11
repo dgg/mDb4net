@@ -55,7 +55,7 @@
 				<section>
 					<h2>Document databases</h2>
 					<p>
-						A compromise No-SQL.
+						A <em>little-compromise</em> No-SQL.
 					</p>
 					<p>
 						Say <em>so long</em> to duplicated schema (tables/code) and relational/object impedance.
@@ -68,7 +68,7 @@
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
-						<h2>The Basics</h2>
+						<h2>The Foundation</h2>
 						<p>
 							Distribution <a href="http://www.mongodb.org/downloads" target="_blank">download</a>.
 						</p>
@@ -85,18 +85,23 @@
 						<p>Deploy it as a Windows service.</p>
 						<aside class="notes">
 							Demo: run it from command line and install it as a service.
+							<blockquote><code>%mongo_path%/>mongod --install</code></blockquote>
 						</aside>
 					</section>
 					<section>
 						<h2>The Client <code>mongo.exe</code></h2>
 						<p>The mongo Shell is a bundle of <i>Javascript</i> and CLI love with tab completion.</p>
-						<p>The <i>preferred</i> to interact with the server outside code.</p>
+						<p>The <i>preferred</i> way to interact with the server outside code.</p>
 						<br/>
 						<blockquote>
 							MongoShell <strong>IS</strong> Javascript. It is easy to pass a <code>.js</code> file with advanced commands for data migrations.
 						</blockquote>
 						<aside class="notes">
 							Demo: use mongo to query some existing data that will be imported with mongoimport.exe.
+							<blockquote><ul>
+								<li><code>PS/>Import-Posts.ps1</code></li>
+								<li><code>%mongo_path%/>mongo</code></li>
+							</ul></blockquote>
 						</aside>
 					</section>
 					<section>
@@ -118,52 +123,71 @@
 							<p><code>PM&gt; Install-Package mongocsharpdriver </code></p>
 						</div>
 						<aside class="notes">
-							Demo: open the demo solution and add it from the Nuget shell.
+							Show <i>Nuget Package Explorer</i> with "mongo" query.
 						</aside>
 					</section>
 				</section>
 
 				<section>
-					<h2>Nice to know</h2>
+					<h2>The Basics</h2>
 					<ul>
 						<li>Connection management</li>
-						<li>BSON and <code>BsonDocument</code></li>
-						<li>Document identity</li>
+						<li><em>JSON</em>... errrr BSON and <code>BsonDocument</code></li>
 					</ul>
 					<aside class="notes">
-						Demo: show how to access a single database, or multiple databases with and without IOC containers
+						Demo: 
+						<blockquote>
+							<code>Connect.start.linq</code>
+							<ul>
+								<li><em>connect.01.default</em></li>
+								<li><em>connect.02.serverUrl</em></li>
+								<li><em>connect.03.clientSettings</em></li>
+								<li><em>connect.04.mongoUrl</em></li>
+								<li><em>connect.05.databaseSettings</em></li>
+							</ul>
+							
+							<code>Bson.start.linq</code>
+							<ul>
+								<li><em>bson.01.empty</em></li>
+								<li><em>bson.02.initialize</em></li>
+								<li><em>bson.03.addProperty</em></li>
+								<li><em>bson.04.chainProperties</em></li>
+								<li><em>bson.05.indexers</em></li>
+								<li><em>bson.06.arrays</em></li>
+								<li><em>bson.07.subDocument</em></li>
+								<li><em>bson.08.jsonLike</em></li>
+								<li><em>bson.09.toBson</em></li>
+								<li><em>bson.10.toJson</em></li>
+								<li><em>bson.11.parse</em></li>
+							</ul>
+						</blockquote>
 					</aside>
-					<aside class="notes">
-						Demo: show how to create BsonDocuments:
-							* BsonDoc.Add("", "")
-							* fluent .Add().Add()
-							* BsonDoc{{key, value}}
-							* showcase sub-documents and arrays
-							* update and set with indexers
-					</aside>
-					<aside class="notes">
-						Demo: show different strategies to identify documents:
-						* any simple type
-						* Guid
-						* ObjectId
-						* compound keys (they are just documents)
-						Show more in serialization
-					</aside>
+
 				</section>
 
 				<section>
 					<h2>CRUD</h2>
 					<p>
-						Spice it with application-oriented data modelling  and simple CRUD (with BIG R) is what you will do day in and day out.
+						Spice it with application-oriented data modelling  and simple CRUD (with BIG R) is what you do day in and day out.
 					</p>
 					<aside class="notes">
-						Demo: insert some documents using BsonDocument.
-					</aside>
-					<aside class="notes">
-						Demo: .FindOne() and Find() with several flavours of query documents: raw BsonDocument, QueryDocument, Query builder
-					</aside>
-					<aside class="notes">
-
+						<code>CRUD.start.linq</code> + Robomongo
+						<ul>
+								<li><em>crud.01.createOne</em> _id an object id populated by default</li>
+								<li><em>crud.02.createMore</em>_id are: simple type, GUID, compounds key. More about ids in "serialization"</li>
+								<li><em>crud.03.retrieveSimple</em> .FindOne() .FindAll(), .Find()</li>
+								<li><em>crud.04.retrieveArray</em> query inside arrays</li>
+								<li><em>crud.05.retrieveQueryBuilder</em> compose complex queries</li>
+								<li><em>crud.06.retrieveSubDocuments</em> dot notations for querying inside documents</li>
+								<li><em>crud.07.retrieveWithKey</em> documents with certain keys</li>
+								<li><em>crud.08.retrieveCursor</em> cursors are lazy, fluent and allow projections</li>
+								<li><em>crud.09.updateSet</em> add properties</li>
+								<li><em>crud.10.updateUnset</em> remove properties</li>
+								<li><em>crud.11.updateInc</em> property arithmetic</li>
+								<li><em>crud.12.updateUpsert</em> propertyupadte or insert</li>
+								<li><em>crud.13.updateMulti</em> more than one doc</li>
+								<li><em>crud.14.delete</em></li>
+							</ul>
 					</aside>
 				</section>
 				<section>
@@ -176,10 +200,16 @@
 					</p>
 					<p>Capacity plan your machines memory for indexes (and working set) to reside in there.</p>
 					<aside class="notes">
-						Demo: Load a big dataset (postal codes of germany). Query for coordinates with .explain(). Add an index and .explain() again.
-					</aside>
-					<aside class="notes">
-						Demo: use .explain() from a query from LinqPad. Add the index and run again.
+						Demo: 
+						Load decent size data set and .explain(). 
+						<blockquote><ul>
+								<li><code>PS/>data\Import-Postal-Codes.ps1</code></li>
+								<li>.explain() from roboMongo</li>
+								<li><em>index.01.none</em> n, nscanned</li>
+								<li><em>index.02.explain</em> n, nscanned</li>
+								<li><em>index.03.projection</em> stats.type for every query</li>
+								<li><em>index.04.covered</em> indexOnly and nScannedObjects</li>
+							</ul></blockquote>
 					</aside>
 				</section>
 
@@ -189,16 +219,40 @@
 						And in .NET land, objects is spoken, not documents or pseudo-documents.
 					</p>
 					<p>Such small impedance can be mitigated by using the serialization part of the driver.</p>
+					<aside class="notes">
+						Demo: 
+						Customize object serialization. 
+						<blockquote><ul>
+								<li>Use <code>.ToJson()</code> to show defaults</li>
+								<li>Customize with <code>[BsonElement]</code></li>
+								<li>Set name with a <code>ClassMap</code></li>
+								<li>Change property name convention (camel) with <code>ConventionPack</code></li>
+								<li>Create a custom <code>IBsonSerializer</code></li>
+								<li>Apply the serializer to a property via <code>BsonSerializerAttribute</code></li>
+								<li>Apply the serializer to a property using a <code>ClassMap</code></li>
+								<li>Apply the serializer to all properties using <code>IMemberMapConvention</code></li>
+								<li>Apply a custom id generation using <code>ClassMap</code> and insert twice.</li>								
+							</ul></blockquote>
+					</aside>
 				</section>
 
 				<section>
 					<h2>LINQ</h2>
 					<p>
 						Knowing how to build <code>IMongoQuery</code> is good. But we are in .NET land.<br/>
-						And in .NET land, LINQ in king in terms of querying.
+						And in .NET land, LINQ is king in terms of querying.
 					</p>
 					<aside class="notes">
-						Demo: rewrite CRUD queries in LINQ
+						Demo: 
+						rewrite cRud queries in LINQ. 
+						<blockquote><ul>
+								<li><em>linq.01.retrieveSimple</em></li>
+								<li><em>linq.02.retrieveArrays</em></li>
+								<li><em>linq.03.queryOperators</em></li>
+								<li><em>linq.04.retrieveSubDocuments</em></li>
+								<li><em>linq.05.retrieveWithKey</em></li>
+								<li><em>linq.06.retrieveQuery</em> and introduce client-side projections</li>
+							</ul></blockquote>
 					</aside>
 				</section>
 
@@ -209,236 +263,73 @@
 						Let's scartch the surface...
 					</p>
 					<aside class="notes">
-						demo: find 10 nearest postal codes from a given location
+						Demo: find 5 nearest postal codes from a given location
+						<blockquote><ul>
+								<li><code>PS/>data\Import-Postal-Codes.ps1</code></li>
+								<li><em>geo.01.geoNearArray</em>returns extended information in a sub-document</li>
+								<li><em>geo.02.geoNearObject</em>better information</li>
+								<li><em>geo.03.queryNearGeoJSON</em> less information</li>
+							</ul></blockquote>
 					</aside>
 				</section>
 
 				<section>
 					<h2>Data squeezing</h2>
-					<p>Sometimes, we need to asnwer difficult questions. We have two ways to asnwer:</p>
+					<p>Sometimes, we need to answer difficult questions. We have two ways to answer:</p>
 					<ul>
 						<li>Map/Reduce (on its way out)</li>
 						<li>Aggregation framework</li>
 					</ul>
 					<p>In reality, these are nice extras: OLAP databases are for data analysis</p>
+					
+					<aside class="notes">
+						<ul>
+							<li><code>PS/>data\Import-Postal-Codes.ps1</code></li>
+							<li><code>SimpleAggregation.start.linq</code> + Robomongo</li>
+							<li><em>aggregation.01.selectMany</em> $unwind</li>
+							<li><em>aggregation.02.where</em> $match</li>
+							<li><em>aggregation.03.average</em> $group + $avg</li>
+						</ul>
+					</aside>
 				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
+				
 				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
+					<h2>Bonus Tracks</h2>
 					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+						<li>Document projections</li>
+						<li>&ldquo;Dynamify&rdquo; <code>BsonDocument</code></li>
 					</ul>
+					
+					
+					<aside class="notes">
+						Demo: Real projections (get only data needed).
+						<ul>
+							<li><code>PS/>git checkout projections</code></li>
+							<li><code>PS/>data\Import-Postal-Codes.ps1</code></li>
+							<li>Command prompt as administrator</li>
+							<li><code>%/>RawCap.exe</code> on loopback</li>
+							<li><em>projections.01.snapshot</em> different type with less fields</li>
+							<li><em>projections.02.anonymousProjection</em> project into anonymous</li>
+							<li><em>projections.03.fields</em> specify type-safe fields</li>
+							<li><em>projections.04.allFields</em> helper to load all fields from a type</li>
+						</ul>
+						Demo: Use dynamic syntax (dot your way through).
+						<ul>
+							<li><code>PS/>git checkout dynamic</code></li>
+							<li><code>PS/>data\Import-Postal-Codes.ps1</code></li>
+							<li>http://.../static/postal-codes</li>
+							<li>http://.../dynamic/postal-codes</li>
+						</ul>
+					</aside>
 				</section>
-
+				
 				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
+					<h2>Code</h2>
+					<p>All code (and slides) is located in <a href="https://github.com/dgg/mDb4net" target="_blank">Github</a> </p>
+					<p>Use it (and abuse it) wisely</p>
+					<hr/>
+					<h3>Tak</h3>
 				</section>
-
 			</div>
 		</div>
 		<div class="logo">
